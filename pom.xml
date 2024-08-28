@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ericsson.oss.ciexec</groupId>
+  <artifactId>esonmal-TestRepository</artifactId>
+  <version>1.0.16-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>esonmal-TestRepository</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <gerrit.ssh.url>ssh://gerrit.ericsson.se:29418</gerrit.ssh.url>
+    <nexus.url>https://arm101-eiffel004.lmera.ericsson.se:8443/nexus</nexus.url>
+    <ericsson.scm.url>scm:git:${gerrit.ssh.url}/OSS/${project.groupId}/${project.artifactId}</ericsson.scm.url>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <modules>
+    <module>esonmal-TestRepository-jar</module>
+    <module>esonmal-TestRepository-ear</module>
+  </modules>
+
+  <scm>
+  <developerConnection>${ericsson.scm.url}</developerConnection>
+  <connection>${ericsson.scm.url}</connection>
+  <tag>HEAD</tag>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>releases</id>
+      <name>Releases</name>
+      <url>${nexus.url}/content/repositories/releases</url>
+    </repository>
+    <site>
+      <id>site</id>
+      <name>Site</name>
+      <url>${nexus.url}/content/sites/tor</url>
+    </site>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>Snapshots</name>
+      <url>$(nexus.url}/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+</project>
